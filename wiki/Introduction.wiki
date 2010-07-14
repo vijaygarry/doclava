@@ -172,3 +172,6 @@ Specify the level of visibility to show.  -public shows only public classes, mem
 
 ===-federate _name_ _site_===
 Link against an external documentation site.
+
+===Contributing to Doclava===
+If you are interested in contributing to Doclava, email a project owner for commit access.
