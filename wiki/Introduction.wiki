@@ -1,0 +1,174 @@
+=Doclava=
+
+Doclava is a custom javadoc doclet used to generate documentation. Doclava was forked from the Android build system for use on any Java project, and is used to generate the Android SDK.
+
+Key differences between Doclava and the standard doclet include:
+  * Ability to embed javadocs in a larger web page.
+  * Refreshed look and feel, including search capabilities.
+  * Support a templating engine for user customizations.
+  * Throw build errors for things that can easily be caught, like @param tags that don't match the parameter names.
+  * Ability to include snippets of code from real source code, so we know it at least compiles.
+  * Federate documentation between multiple sites.
+
+Doclava uses [http://www.clearsilver.net/ Clearsilver] as its templating engine.
+
+
+==New or Improved Tags==
+
+===@hide===
+
+When applied to a package, class, method or field, @hide removes that node and all of its children from the documentation.
+
+===@deprecated===
+
+Puts a warning message that you shouldn't use this particular class, method or field.  The warning is a little different from Sun's though:
+  * In the summary listing, they also list the brief description of the element.  We only put the warning in the summary list, and make the user scroll down to the full description to get any info about what it does.  This is to further discourage use of deprecated program elements.
+  * When a class inherits from a deprecated class or overrides a deprecated method, the deprecated warning automatically propagates into that documentation.  (This is not done when a class inherits from a deprecated interface).  You can add @undeprecate to the comments for the subclass / overridden method if you want to suppress this behavior.
+
+===@undeprecate===
+
+Don't inherit @deprecated from your superclass or overridden method.  See @deprecated above.
+
+==={@more}===
+
+The Sun javadoc always ends the brief description of a program element at the first period.  If you have more to say in the brief description, or have markup that has periods, put {@more} where you want the break to be.  Everything after that will be in the full description.
+
+==={@sample} and {@include}===
+
+These tags copy sample text from an arbitrary file into the output javadoc html.
+
+The @include tag copies the text verbatim from the given file.
+
+The @sample tag copies the text from the given file and 
+  * strips leading and trailing whitespace
+  * reduces the indent level of the text to the indent level of the first non-whitespace line
+  * escapes all <, >; and & characters for html
+  * drops all lines containing either BEGIN_INCLUDE or END_INCLUDE so sample code can be nested
+
+Both tags accept either a filename and an id or just a filename.  If no id is provided, the entire file is copied.  If an id is provided, the lines in the given file between the first two lines containing BEGIN_INCLUDE(id) and END_INCLUDE(id), for the given id, are copied.  The id may be only letters, numbers and underscore (_).
+
+Four examples:
+{{{
+{@include samples/SampleCode/src/com/google/app/Notification1.java}
+{@sample samples/SampleCode/src/com/google/app/Notification1.java}
+{@include samples/SampleCode/src/com/google/app/Notification1.java Bleh}
+{@sample samples/SampleCode/src/com/google/app/Notification1.java Bleh}
+}}}
+
+===@attr==
+
+The @attr tag is used for generating the docs on XML Attributes.
+
+  * @attr name _name_ -- declares an xml attribute.  The comment here can come from an @attr description tag.  _name_ should be what you want the developer to see.  (In android, this tag is added by aapt to the R files.)
+  * @attr ref _field_ -- references a field that has an @attr name tag on it.
+  * @attr description _more_tags_ -- defines the docs that are pulled into the XML Attributes section.
+
+==Tags that are not supported==
+
+===@author===
+
+Intentionally left out.
+
+===@since, @version, @serial===
+
+We just haven't gotten to this yet.
+
+===Narrative Documentation: -htmldir and .jd files===
+
+If -htmldir is given on the commandline, then Doclava reads all files in the given directory, including subdirectories, and depending on the extension of the file, takes one of the following actions:
+
+====_filename_.jd====
+
+A .jd file consists of a set of Clearsilver hdf definitions, followed by "@jd:body", and then the body text of the document.
+
+The standard Clearjavadoc templates use the hdf node page.title to set the html `<title>` tag.
+
+The body text of the document has the following operations performed on it:
+  * It is run through the javadoc processor.  All inline javadoc tags work (like {@link}).  No out-of-line javadoc tags work (what would @return do anyway in this context?).
+  * It is wrapped with the standard formatting of the documentation pages, that comes from the Clearsilver templates.
+
+The output is then saved to _filename_.html.
+
+{{{
+page.title=Android SDK
+@jd:body
+<h1>Android SDK </h1>
+<p>Welcome to Android!</p>
+<p>This is a link to a class called {@link android.view.View}.</p>
+}}}
+
+
+====_filename_.cs====
+
+The file is processed as a Clearsilver template file and saved to _filename_.html in the output directory.  Javadoc processing is not performed as it would be with .jd files.
+
+====Otherwise====
+
+The file is copied to the output directory unchanged.
+
+
+
+==Command Line Flags==
+
+===-d _dir_===
+
+Specify where to put the output files.
+
+
+===-templatedir _dir_===
+
+Specify the directory of clearsilver template files.  You can have as many of these as you need
+
+
+===-hdf _name_ _value_===
+
+Set a value in the Clearsilver hdf namespace.  See the [http://www.clearsilver.net/docs/ Clearsilver docs] for more info.
+
+
+===-htmldir _dir_===
+
+Specify the source directory for html/jd files.  If you use this flag, you should have a file in that directory called _index.jd_.  It will turn that into the index.html, and add that as the "Main Page."  If you don't specify this flag, the packages list page will become the index.html.
+
+You can also put files, for example, images, in this directory and they will be copied to the output directory.
+
+See "Narrative Documentation: .jd files" below for more information on what goes in this directory.
+
+
+===-title _string_===
+
+Specify a string to use as the html page title.
+
+
+===-werror===
+
+Set this if you want anything that would be a warning to be an error.  You can use _-error_, _-warning_ or _-hide_ for finer-grained control.  See below.
+
+
+===-error _number_, -warning _number_, -hide _number_===
+
+Specify whether a given error _number_ is an error, warning, or whether to hide it altogether.  These are common documentation mistakes that can easily be caught by the tool and increase the general quality and reduce the amount of proofreading necessary.  None of these default to error because the Sun doclet allows most of these errors, and defaulting to errors would make most Java code not produce docs by default.  The best practice is to turn the warnings into errors one at a time once you have eliminated them.
+
+|| *Error Number* || *Default* || *Description* ||
+|| 1              || warning   || Unresolved @link or @see tag. ||
+|| 2              || warning   || Bad {@sample } or {@include } tag. ||
+|| 3              || warning   || Unknown tag.  Check for misspellings like @returns instead of @return, @throw instead of @throws, etc. ||
+|| 4              || warning   || Bad @param tag name.  An @param tag references a parameter name that doesn't exist in the given method. ||
+|| 5              || hidden    || Undocumented Parameter.  There is a parameter that doesn't have a corresponding @param tag.  This is really really common, so it's hidden by default ||
+
+
+===-proofread _file_===
+
+Specify a proofread file.  A proofread file contains all of the text content of the javadocs concatenated into one file, suitable for spell-checking and other goodness.
+
+
+===-todo _file_===
+
+Specify a todo file.  A todo file lists the program elements that are missing documentation.  At some point, this might be improved to show more warnings.
+
+
+===-public, -protected, -package, -private, -hidden===
+
+Specify the level of visibility to show.  -public shows only public classes, members; -protected only protected, etc.  -hidden shows everything, even program elements that have been hidden with @hide.
+
+===-federate _name_ _site_===
+Link against an external documentation site.
