@@ -1,0 +1,64 @@
+=Command Line Arguments=
+
+===-d _dir_===
+
+Specify where to put the output files.
+
+
+===-templatedir _dir_===
+
+Specify the directory of clearsilver template files.  You can have as many of these as you need
+
+
+===-hdf _name_ _value_===
+
+Set a value in the Clearsilver hdf namespace.  See the [http://www.clearsilver.net/docs/ Clearsilver docs] for more info.
+
+
+===-htmldir _dir_===
+
+Specify the source directory for html/jd files.  If you use this flag, you should have a file in that directory called _index.jd_.  It will turn that into the index.html, and add that as the "Main Page."  If you don't specify this flag, the packages list page will become the index.html.
+
+You can also put files, for example, images, in this directory and they will be copied to the output directory.
+
+See "Narrative Documentation: .jd files" below for more information on what goes in this directory.
+
+
+===-title _string_===
+
+Specify a string to use as the html page title.
+
+
+===-werror===
+
+Set this if you want anything that would be a warning to be an error.  You can use _-error_, _-warning_ or _-hide_ for finer-grained control.  See below.
+
+
+===-error _number_, -warning _number_, -hide _number_===
+
+Specify whether a given error _number_ is an error, warning, or whether to hide it altogether.  These are common documentation mistakes that can easily be caught by the tool and increase the general quality and reduce the amount of proofreading necessary.  None of these default to error because the Sun doclet allows most of these errors, and defaulting to errors would make most Java code not produce docs by default.  The best practice is to turn the warnings into errors one at a time once you have eliminated them.
+
+|| *Error Number* || *Default* || *Description* ||
+|| 1              || warning   || Unresolved @link or @see tag. ||
+|| 2              || warning   || Bad {@sample } or {@include } tag. ||
+|| 3              || warning   || Unknown tag.  Check for misspellings like @returns instead of @return, @throw instead of @throws, etc. ||
+|| 4              || warning   || Bad @param tag name.  An @param tag references a parameter name that doesn't exist in the given method. ||
+|| 5              || hidden    || Undocumented Parameter.  There is a parameter that doesn't have a corresponding @param tag.  This is really really common, so it's hidden by default ||
+
+
+===-proofread _file_===
+
+Specify a proofread file.  A proofread file contains all of the text content of the javadocs concatenated into one file, suitable for spell-checking and other goodness.
+
+
+===-todo _file_===
+
+Specify a todo file.  A todo file lists the program elements that are missing documentation.  At some point, this might be improved to show more warnings.
+
+
+===-public, -protected, -package, -private, -hidden===
+
+Specify the level of visibility to show.  -public shows only public classes, members; -protected only protected, etc.  -hidden shows everything, even program elements that have been hidden with @hide.
+
+===-federate _name_ _site_===
+Link against an external documentation site.
