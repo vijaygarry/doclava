@@ -18,6 +18,7 @@ Doclava can be used as a standard Doclet, and can be run through the Ant or Mave
 For more information on how to use Doclava, see:
   * [JavadocTags List of supported tags]
   * [CommandLineArguments Supported arguments]
+  * [EmbeddedDocs Embedding documentation in your project page]
 
 ===Contributing to Doclava===
 If you are interested in contributing to Doclava, email a project owner for commit access.
