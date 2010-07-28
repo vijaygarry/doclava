@@ -7,7 +7,7 @@ If -htmldir is given on the commandline, then Doclava reads all files in the giv
 
 A .jd file consists of a set of Clearsilver hdf definitions, followed by "@jd:body", and then the body text of the document.
 
-The standard Clearjavadoc templates use the hdf node page.title to set the html `<title>` tag.
+The standard Doclava templates use the hdf node page.title to set the html `<title>` tag.
 
 The body text of the document has the following operations performed on it:
   * It is run through the javadoc processor.  All inline javadoc tags work (like {@link}).  No out-of-line javadoc tags work (what would @return do anyway in this context?).
