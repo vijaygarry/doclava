@@ -60,5 +60,8 @@ Specify a todo file.  A todo file lists the program elements that are missing do
 
 Specify the level of visibility to show.  -public shows only public classes, members; -protected only protected, etc.  -hidden shows everything, even program elements that have been hidden with @hide.
 
+===-since _version.xml_ _name_===
+Provide information about when API features were added to the project.
+
 ===-federate _name_ _site_===
 Link against an external documentation site.
