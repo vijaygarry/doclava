@@ -1,0 +1,51 @@
+#summary Getting Started with Doclava
+
+= Getting Started =
+
+== Building Doclava ==
+The Doclava source comes bundled with an [http://ant.apache.org/ ant] script to build the doclet. The "jar" task will build a jar containing Doclava and all necessary dependencies.
+
+== Using Doclava with Javadoc ==
+Doclava is implented as a Doclet, and can be used anywhere [http://www.oracle.com/technetwork/java/javase/documentation/index-jsp-135444.html Javadoc] is used.
+
+The command line arguments to pass to Javadoc to use Doclava are:
+{{{
+  -doclet com.google.doclava.Doclava
+  -docletpath ${jar.file}
+}}}
+
+Be sure to see the list of Doclava's [CommandLineArguments command line arguments].
+
+== Using Doclava with Ant ==
+Doclava comes bundled with an Ant task. Here's an example of the task in action from the Doclava build script:
+
+{{{
+  <project>
+    ....
+
+    <target name="doclava" description="Generate documentation">
+      <taskdef name="doclava" classname="com.google.doclava.DoclavaTask" classpath="${jar.file}"/>
+
+      <mkdir dir="build"/>
+      <exec executable="/bin/sh">
+	<arg value="-c"/>
+	<arg value="find ./src -name '*.java' &gt; build/src-list"/>
+      </exec>
+    
+      <doclava>
+	<arguments>
+	      	-quiet
+	       	-bootclasspath "${javahome}/jre/lib/rt.jar"
+	       	-doclet com.google.doclava.Doclava
+	       	-docletpath ${jar.file}
+	       	-classpath ${jar.file}
+	       	-d build/docs
+	       	-hdf project.name "Doclava"
+	       	@build/src-list
+        </arguments>
+      </doclava>
+    </target>
+  </project>
+}}}
+== Using Doclava with Maven ==
+See [http://maven.apache.org/plugins/maven-javadoc-plugin/examples/alternate-doclet.html Maven's guide for using alternate doclets.] Use the doclet "com.google.doclava.Doclava" and be sure to have the .jar specified in your docletPath.
