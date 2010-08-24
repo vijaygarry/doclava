@@ -63,5 +63,8 @@ Specify the level of visibility to show.  -public shows only public classes, mem
 ===-since _version.xml_ _name_===
 Provide information about when API features were added to the project.
 
+===-apiversion _version_===
+The current version name of the project. Used when generating versioned documentation using the "-since" argument.
+
 ===-federate _name_ _site_===
 Link against an external documentation site.
