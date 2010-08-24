@@ -17,35 +17,31 @@ The command line arguments to pass to Javadoc to use Doclava are:
 Be sure to see the list of Doclava's [CommandLineArguments command line arguments].
 
 == Using Doclava with Ant ==
-Doclava comes bundled with an Ant task. Here's an example of the task in action from the Doclava build script:
+Ant's built-in [http://ant.apache.org/manual/Tasks/javadoc.html javadoc task] can be configured to use third-party doclets. The following is an example of how Doclava builds its own documentation:
 
 {{{
-  <project>
-    ....
-
-    <target name="doclava" description="Generate documentation">
-      <taskdef name="doclava" classname="com.google.doclava.DoclavaTask" classpath="${jar.file}"/>
-
-      <mkdir dir="build"/>
-      <exec executable="/bin/sh">
-	<arg value="-c"/>
-	<arg value="find ./src -name '*.java' &gt; build/src-list"/>
-      </exec>
-    
-      <doclava>
-	<arguments>
-	      	-quiet
-	       	-bootclasspath "${javahome}/jre/lib/rt.jar"
-	       	-doclet com.google.doclava.Doclava
-	       	-docletpath ${jar.file}
-	       	-classpath ${jar.file}
-	       	-d build/docs
-	       	-hdf project.name "Doclava"
-	       	@build/src-list
-        </arguments>
-      </doclava>
-    </target>
-  </project>
+<project>
+  ...
+  <target name="doclava" depends="jar">
+    <javadoc packagenames="com.google.*"
+           destdir="build/docs"
+           sourcepath="src"
+           docletpath="${jar.file}"
+           bootclasspath="${javahome}/jre/lib/rt.jar"
+           >
+      <doclet name="com.google.doclava.Doclava">
+        <param name="-stubs" value="build/stubs" />
+        <param name="-hdf"/> <param name="project.name"/> <param name="Doclava"/>
+        <param name="-since"/> <param name="doclava/previous.xml"/> <param name="v1" />
+        <param name="-apiversion" value="v2"/>
+      </doclet>
+    </javadoc>
+  </target>
+</project>
 }}}
+
+Note that some [CommandLineArguments command line arguments] take more than one value, and so cannot be specified using {{{<param name="-foo" value="bar"/>}}} elements. Instead, list each value in its own element, as in {{{<param name="-foo"/> <param name="val1"/> <param name="val2"/>}}}.
+
+
 == Using Doclava with Maven ==
 See [http://maven.apache.org/plugins/maven-javadoc-plugin/examples/alternate-doclet.html Maven's guide for using alternate doclets.] Use the doclet "com.google.doclava.Doclava" and be sure to have the .jar specified in your docletPath.
