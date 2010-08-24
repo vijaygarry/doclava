@@ -54,10 +54,9 @@ The @attr tag is used for generating the docs on XML Attributes.
 
 ==Tags that are not supported==
 
-===@author===
-
-Intentionally left out.
-
-===@since, @version, @serial===
+===@author, @version, @serial===
 
 We just haven't gotten to this yet.
+
+===@since===
+Again, we just haven't gotten there, but versioning is also supported across the entire api through versioned xml files. See [CommandLineArguments].
