@@ -39,7 +39,7 @@ By specifying this directory, you can override any of the built-in assets and te
 == Advanced Customizations ==
 
 === Embedded docs ===
-See [[EmbeddedDocs]] for information on embedding your documentation in a larger project page.
+[EmbeddedDocs Click here] for information on embedding your documentation in a larger project page.
 
 === Custom code ===
 Doclava is open source, so feel free to customize it to fit your needs! If you do something you think others will enjoy, be sure to let us know.
