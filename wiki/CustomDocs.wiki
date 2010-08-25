@@ -1,10 +1,5 @@
 #summary Various ways to customize your documentation
 
-= Introduction =
-
-Doclava can be configured in various ways to build documentation that fits your projects needs.
-
-
 == Simple Customizations ==
 
 === Add a title ===
