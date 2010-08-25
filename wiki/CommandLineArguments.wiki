@@ -70,4 +70,4 @@ The current version name of the project. Used when generating versioned document
 Link against an external documentation site.
 
 ===-paresecomments===
-If Doclava is being run for a purpose other than generating documentation, this flag indicates that javadoc comments will not be parsed. This can speed up builds for large projects, but will result in errors in comments not being reported.
+If Doclava is being run for a purpose other than generating documentation, comments will not be parsed unless this flag is set. Not parsing comments can speed up builds for large projects, but will result in errors in those comments not being reported.
