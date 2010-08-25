@@ -4,7 +4,7 @@
 
 === Add a title ===
 
-You can set a title for your project by passing an [http://en.wikipedia.org/wiki/Hierarchical_Data_Format HDF variable] as an argument to doclava. Add the argument:
+You can set a title for your project by passing an [http://en.wikipedia.org/wiki/Hierarchical_Data_Format HDF] variable as an argument to doclava. Add the argument:
 
 {{{ -hdf project.name "Your Project's Name" }}}
 
