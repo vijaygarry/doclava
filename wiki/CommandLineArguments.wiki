@@ -45,7 +45,7 @@ Specify whether a given error _number_ is an error, warning, or whether to hide 
 || 104              || warning   || Bad @param tag name.  An @param tag references a parameter name that doesn't exist in the given method. ||
 || 105              || hidden    || Undocumented Parameter.  There is a parameter that doesn't have a corresponding @param tag.  This is really really common, so it's hidden by default ||
 
-Click [http://code.google.com/p/doclava/source/browse/trunk/src/com/google/doclava/Errors.java here] for a full list of errors.
+Click [http://code.google.com/p/doclava/source/browse/trunk/src/com/google/doclava/Errors.java#115 here] for a full list of errors.
 ===-proofread _file_===
 
 Specify a proofread file.  A proofread file contains all of the text content of the javadocs concatenated into one file, suitable for spell-checking and other goodness.
