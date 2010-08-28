@@ -39,13 +39,13 @@ Set this if you want anything that would be a warning to be an error.  You can u
 Specify whether a given error _number_ is an error, warning, or whether to hide it altogether.  These are common documentation mistakes that can easily be caught by the tool and increase the general quality and reduce the amount of proofreading necessary.  None of these default to error because the Sun doclet allows most of these errors, and defaulting to errors would make most Java code not produce docs by default.  The best practice is to turn the warnings into errors one at a time once you have eliminated them.
 
 || *Error Number* || *Default* || *Description* ||
-|| 1              || warning   || Unresolved @link or @see tag. ||
-|| 2              || warning   || Bad {@sample } or {@include } tag. ||
-|| 3              || warning   || Unknown tag.  Check for misspellings like @returns instead of @return, @throw instead of @throws, etc. ||
-|| 4              || warning   || Bad @param tag name.  An @param tag references a parameter name that doesn't exist in the given method. ||
-|| 5              || hidden    || Undocumented Parameter.  There is a parameter that doesn't have a corresponding @param tag.  This is really really common, so it's hidden by default ||
+|| 101              || warning   || Unresolved @link or @see tag. ||
+|| 102              || warning   || Bad {@sample } or {@include } tag. ||
+|| 103              || warning   || Unknown tag.  Check for misspellings like @returns instead of @return, @throw instead of @throws, etc. ||
+|| 104              || warning   || Bad @param tag name.  An @param tag references a parameter name that doesn't exist in the given method. ||
+|| 105              || hidden    || Undocumented Parameter.  There is a parameter that doesn't have a corresponding @param tag.  This is really really common, so it's hidden by default ||
 
-
+Click [http://code.google.com/p/doclava/source/browse/trunk/src/com/google/doclava/Errors.java here] for a full list of errors.
 ===-proofread _file_===
 
 Specify a proofread file.  A proofread file contains all of the text content of the javadocs concatenated into one file, suitable for spell-checking and other goodness.
