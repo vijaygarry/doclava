@@ -67,7 +67,7 @@ Provide information about when API features were added to the project.
 The current version name of the project. Used when generating versioned documentation using the "-since" argument.
 
 ===-federate _name_ _site_===
-Link against an external documentation site.
+Link against an external documentation site. For more information, see [FederatedDocs]
 
 ===-federationxml _name_ _file_===
 You can specify an alternative xml file when federating against an external site. This can be useful for federating against sites that use the same layout for reference documentation, but do not provide a current.xml file.
