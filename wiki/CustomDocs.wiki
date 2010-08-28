@@ -29,6 +29,7 @@ By specifying this directory, you can override any of the built-in assets and te
          masthead.cs
          search_box.cs
       customizations.cs
+      footer.cs
 }}}
 
 == Advanced Customizations ==
