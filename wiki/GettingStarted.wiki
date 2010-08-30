@@ -72,3 +72,5 @@ See [http://maven.apache.org/plugins/maven-javadoc-plugin/examples/alternate-doc
   </build>
 </project>
 }}}
+
+Your documentation can be built with the {{{mvn javadoc:javadoc}}} goal.
