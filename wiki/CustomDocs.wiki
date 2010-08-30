@@ -8,6 +8,12 @@ You can set a title for your project by passing an [http://en.wikipedia.org/wiki
 
 {{{ -hdf project.name "Your Project's Name" }}}
 
+=== Add an overview page ===
+The standard Javadoc tool supports an [http://download-llnw.oracle.com/javase/1.3/docs/tooldocs/solaris/javadoc.html#overviewtags overview page], configured as:
+{{{ -overview <yourpage.html> }}}
+
+This is a good place to let users know which classes and methods to look at to get started with your project.
+
 === Change the style ===
 
 By default, Doclava includes an empty "assets/customizations.css" file as the last included css file. By overriding this file, you can modify the look and feel of your page.
