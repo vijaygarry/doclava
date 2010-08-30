@@ -44,4 +44,31 @@ Note that some [CommandLineArguments command line arguments] take more than one 
 
 
 == Using Doclava with Maven ==
-See [http://maven.apache.org/plugins/maven-javadoc-plugin/examples/alternate-doclet.html Maven's guide for using alternate doclets.] Use the doclet "com.google.doclava.Doclava" and be sure to have the .jar specified in your docletPath.
+See [http://maven.apache.org/plugins/maven-javadoc-plugin/examples/alternate-doclet.html Maven's guide for using alternate doclets.] Use the doclet "com.google.doclava.Doclava" and be sure to have the .jar specified in your fully qualified docletPath. An example of using Doclava with Maven:
+{{{
+<project>
+  ...
+  <build>
+    <plugins>
+      ...
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <version>2.7</version>
+        <configuration>
+          <bootclasspath>${java.home}/lib/rt.jar</bootclasspath>
+          <docletPath>/full/path/to/doclava.jar</docletPath>
+          <doclet>com.google.doclava.Doclava</doclet>
+          <additionalparam>
+             -quiet
+             -federate JDK http://download.oracle.com/javase/6/docs/api/index.html?
+             -federationxml JDK http://doclava.googlecode.com/svn/static/api/openjdk-6.xml
+             -hdf project.name "My Project"
+           </additionalparam>
+          <useStandardDocletOptions>false</useStandardDocletOptions>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>
+}}}
