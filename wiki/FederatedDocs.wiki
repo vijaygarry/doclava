@@ -23,3 +23,5 @@ and then federate against existing documentation with:
   -federate Project http://project.com/reference
   -federationxml Project path/to/api.xml
 }}}
+
+The federation xml file may be a local file or an http link. We have several [http://doclava.googlecode.com/svn/static/api/ sample api.xml] files available for use.
