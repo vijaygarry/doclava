@@ -67,7 +67,7 @@ See [http://maven.apache.org/plugins/maven-javadoc-plugin/examples/alternate-doc
              -quiet
              -federate JDK http://download.oracle.com/javase/6/docs/api/index.html?
              -federationxml JDK http://doclava.googlecode.com/svn/static/api/openjdk-6.xml
-             -hdf project.name "My Project's Documentation"
+             -hdf project.name "${project.name}"
            </additionalparam>
           <useStandardDocletOptions>false</useStandardDocletOptions>
         </configuration>
