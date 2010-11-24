@@ -69,6 +69,10 @@ See [http://maven.apache.org/plugins/maven-javadoc-plugin/examples/alternate-doc
             <version>1.0.2</version>
           </docletArtifact>
           <doclet>com.google.doclava.Doclava</doclet>
+           <!--
+               | bootclasspath required by Sun's JVM 
+           -->
+          <bootclasspath>${sun.boot.class.path}</bootclasspath>
           <additionalparam>
              -quiet
              -federate JDK http://download.oracle.com/javase/6/docs/api/index.html?
@@ -82,5 +86,7 @@ See [http://maven.apache.org/plugins/maven-javadoc-plugin/examples/alternate-doc
   </build>
 </project>
 }}}
+
+The use of `bootclasspath` parameter is strongly recommended if users compile their javadoc with Sun's JVM, it's not required on Apple's JVM that ignores it. If you intend the API docs be generated across multiple JVMs, we suggest to put it as shown above.
 
 You can build your documentation with the {{{mvn javadoc:javadoc}}} goal.
