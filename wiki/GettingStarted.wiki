@@ -78,6 +78,7 @@ See [http://maven.apache.org/plugins/maven-javadoc-plugin/examples/alternate-doc
              -federate JDK http://download.oracle.com/javase/6/docs/api/index.html?
              -federationxml JDK http://doclava.googlecode.com/svn/static/api/openjdk-6.xml
              -hdf project.name "${project.name}"
+             -d ${project.build.directory}/apidocs
            </additionalparam>
           <useStandardDocletOptions>false</useStandardDocletOptions>
         </configuration>
@@ -89,4 +90,4 @@ See [http://maven.apache.org/plugins/maven-javadoc-plugin/examples/alternate-doc
 
 The use of `bootclasspath` parameter is strongly recommended if users compile their javadoc with Sun's JVM, it's not required on Apple's JVM that ignores it. If you intend the API docs be generated across multiple JVMs, we suggest to put it as shown above.
 
-You can build your documentation with the {{{mvn javadoc:javadoc}}} goal.
+You can build your documentation with the {{{mvn javadoc:javadoc}}} or {{{mvn site}}} goal.
