@@ -81,6 +81,10 @@ See [http://maven.apache.org/plugins/maven-javadoc-plugin/examples/alternate-doc
              -d ${project.build.directory}/apidocs
            </additionalparam>
           <useStandardDocletOptions>false</useStandardDocletOptions>
+          <!--
+            | Apple's JVM sometimes requires more memory
+          -->
+          <additionalJOption>-J-Xmx1024m</additionalJOption>
         </configuration>
       </plugin>
     </plugins>
