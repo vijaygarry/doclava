@@ -69,9 +69,9 @@ See [http://maven.apache.org/plugins/maven-javadoc-plugin/examples/alternate-doc
             <version>1.0.2</version>
           </docletArtifact>
           <doclet>com.google.doclava.Doclava</doclet>
-           <!--
-              | bootclasspath required by Sun's JVM 
-           -->
+          <!--
+            | bootclasspath required by Sun's JVM 
+          -->
           <bootclasspath>${sun.boot.class.path}</bootclasspath>
           <additionalparam>
              -quiet
