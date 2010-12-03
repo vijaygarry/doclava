@@ -62,7 +62,6 @@ See [http://maven.apache.org/plugins/maven-javadoc-plugin/examples/alternate-doc
         <artifactId>maven-javadoc-plugin</artifactId>
         <version>2.7</version>
         <configuration>
-          <bootclasspath>${sun.boot.class.path}</bootclasspath>
           <docletArtifact>
             <groupId>com.google.doclava</groupId>
             <artifactId>doclava</artifactId>
