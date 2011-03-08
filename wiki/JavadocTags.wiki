@@ -52,6 +52,18 @@ The @attr tag is used for generating the docs on XML Attributes.
   * @attr ref _field_ -- references a field that has an @attr name tag on it.
   * @attr description _more_tags_ -- defines the docs that are pulled into the XML Attributes section.
 
+===prettyprint===
+Although not a tag, Doclava allows you to print a block of formatted code as follows:
+{{{
+/**
+ * An example code snippet:
+ * <pre class="prettyprint">
+ * public class MyClass {
+ *    public void myMethod() {}
+ * }
+ * </pre>
+ */
+}}}
 ==Tags that are not supported==
 
 ===@author, @version, @serial===
