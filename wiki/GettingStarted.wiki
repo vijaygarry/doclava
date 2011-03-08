@@ -65,7 +65,7 @@ See [http://maven.apache.org/plugins/maven-javadoc-plugin/examples/alternate-doc
           <docletArtifact>
             <groupId>com.google.doclava</groupId>
             <artifactId>doclava</artifactId>
-            <version>1.0.2</version>
+            <version>1.0.3</version>
           </docletArtifact>
           <doclet>com.google.doclava.Doclava</doclet>
           <!--
@@ -97,7 +97,7 @@ You can build your documentation with the {{{mvn javadoc:javadoc}}} or {{{mvn si
 
 === Warning ===
 
-Current release of Doclava (1.0.2) requires JDK1.6 to be executed, if you're testing your application in a retro-compatible JVM we strongly suggest to put Doclava in a proper profile (to avoid break your build), activated when Java1.6 is detected:
+Current release of Doclava (1.0.3) requires JDK1.6 to be executed, if you're testing your application in a retro-compatible JVM we strongly suggest to put Doclava in a proper profile (to avoid break your build), activated when Java1.6 is detected:
 
 {{{
   <profile>
