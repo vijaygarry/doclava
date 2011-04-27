@@ -77,3 +77,6 @@ If Doclava is being run for a purpose other than generating documentation, comme
 
 ===-assetsdir _dir_===
 Puts the assets directory in _dir_, a relative path to the documentation output directory.
+
+===-generatesources===
+Embeds your source code within your generated documentation.
