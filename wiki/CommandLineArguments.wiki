@@ -80,3 +80,9 @@ Puts the assets directory in _dir_, a relative path to the documentation output 
 
 ===-generatesources===
 Embeds your source code within your generated documentation. Added in version 1.0.5.
+
+===-toroot _path_===
+Prepends the given _path_ to any generated relative URL or fragment. Useful for specifying an absolute path.
+
+===-yaml _filename.ext_===
+Generates a [http://wikipedia.org/wiki/YAML YAML] file named _filename.ext_ that contains a list of the package, class, interface and exception names with links to their files.  You may convert this to a navigation menu or table of contents for the reference documentation.
