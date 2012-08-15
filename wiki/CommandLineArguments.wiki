@@ -85,4 +85,4 @@ Embeds your source code within your generated documentation. Added in version 1.
 Prepends the given _path_ to any generated relative URL or fragment. Useful for specifying an absolute path.
 
 ===-yaml _filename.ext_===
-Generates a [http://wikipedia.org/wiki/YAML YAML] file named _filename.ext_ that contains a list of the package, class, interface and exception names with links to their files.  You can convert this to a navigation menu or table of contents for the reference documentation. The output YAML file is created in the assets folder.
+Generates a [http://wikipedia.org/wiki/YAML YAML] file named _filename.ext_ that contains a list of the package, class, interface and exception names with links to their files.  You can convert this to a navigation menu or table of contents for the reference documentation. The output YAML file is created in the assets folder.  You normally set _.ext_ to the .yaml extension.
