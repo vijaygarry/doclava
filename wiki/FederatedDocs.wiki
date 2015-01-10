@@ -25,4 +25,4 @@ and then federate against that project's existing documentation with:
   -federationxml Project path/to/api.xml
 }}}
 
-The federation xml file may be a local file or an http link. We have several [http://doclava.googlecode.com/svn/static/api/ sample api.xml] files available for use.
+The federation xml file may be a local file or an http link. We have several [http://doclava.googlecode.com/svn/static/api/ Android and Open JDK sample api.xml] files available for use.
